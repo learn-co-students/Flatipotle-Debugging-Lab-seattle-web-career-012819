@@ -16,20 +16,21 @@ class Form extends Component {
     ...DEFAULT_STATE
   }
 
-  handleSubmit() {
+  // handleSubmit = this.handleSubmit.bind(this)
+
+  handleSubmit = (event) => {
     event.preventDefault()
     document.getElementById("order-form").reset()
     this.props.addOrder(this.state)
-
+    
     this.setState({
       ...DEFAULT_STATE
     })
   }
 
-  handleChange() {
+  handleChange = (event) => {
     const itemType = event.target.name
     const item = event.target.value
-
     !this.state[`${itemType}`].includes(item) ?
       this.setState({
         [itemType]: this.state[`${itemType}`].concat(item)
